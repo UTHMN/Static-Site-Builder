@@ -220,6 +220,11 @@ def generate_post_pages():
             <style>
                 * {{
                     font-family: "Manrope", sans-serif;
+                    color: #1b1b1b;
+                }}
+                
+                body {{
+                    background-color: #F8F8FF;
                 }}
             </style>
         </html>
