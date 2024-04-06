@@ -158,14 +158,14 @@ def generate_index(title, posts, email):
         file.write(index)
     
 def generate_posts_sec():
-    # posts are stored in format dd/mm/yyyy/title
+    # posts are stored in format dd/mm/yyyy/title.html
     
     posts = []
     post_titles = os.listdir("./posts")
     
     for i in tqdm(range(len(post_titles))):
-        href = f"posts/{post_titles[i]}.html"
-        title = post_titles[i][11:]
+        href = f"posts/{post_titles[i]}"
+        title = post_titles[i][11:][:-5]
         old_date = post_titles[i][:10]
         date = old_date.replace("-", "/")
         description = ""
@@ -193,11 +193,12 @@ def generate_post_pages():
     post_titles = os.listdir("./posts")
     
     for i in tqdm(range(len(post_titles))):
-        title = post_titles[i]
-        export = f"export/posts/{title}.html"
+        title = post_titles[i][11:][:-5]
+        full_title = post_titles[i]
+        export = f"export/posts/{full_title}"
         content = ""
         
-        with open(f"./posts/{title}", "r") as file:
+        with open(f"./posts/{full_title}", "r") as file:
             content = file.read()
         
         index = f"""
